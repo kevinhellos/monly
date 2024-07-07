@@ -1,7 +1,7 @@
 export default function ExpenseCard({ name, amount, category, date, } : 
   { name: string, amount: number, category: string, date: string }) {
   return (
-    <div className="w-full border border-gray-200 py-3 px-5 rounded-lg flex justify-between mb-5">
+    <div className="w-full border border-gray-200 hover:bg-gray-50 hover:cursor-pointer shadow-sm py-3 px-5 rounded-lg flex justify-between mb-5">
       <span>
         <span className="font-medium">{name}</span>
         <span className="block text-xs text-gray-400">{date}</span>

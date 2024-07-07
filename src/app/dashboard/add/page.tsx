@@ -11,10 +11,20 @@ function AddExpense() {
 
   const router = useRouter();
 
+  const expenseCategoryData = [
+    { id: 1, name: "Food" },
+    { id: 2, name: "Transport" },
+    { id: 3, name: "Groceries" },
+    { id: 4, name: "Entertainment" },
+    { id: 5, name: "Travel" },
+    { id: 6, name: "Shopping" },
+    { id: 7, name: "Others" },
+  ];
+
   const expenseNameInput = useRef<HTMLInputElement>(null);
   const [expenseName, setExpenseName] = useState<string>("");
   const [expenseAmount, setExpenseAmount] = useState<number|null>();
-  const [expenseCategory, setExpenseCategory] = useState<string>("food");
+  const [expenseCategory, setExpenseCategory] = useState<string>("Food");
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -93,13 +103,13 @@ function AddExpense() {
                 onChange={(e) => setExpenseCategory(e.target.value)}
                 value={expenseCategory}
             >
-                <option value="food">Food</option>
-                <option value="transport">Transport</option>
-                <option value="groceries">Groceries</option>
-                <option value="entertainment">Entertainment</option>
-                <option value="travel">Travel</option>
-                <option value="shopping">Shopping</option>
-                <option value="other">Other</option>
+                {expenseCategoryData.map((category) => (
+                    <option 
+                        key={category.id}
+                        value={category.name}>
+                        {category.name}
+                    </option>
+                ))}
             </select>
 
             <div className="text-center">

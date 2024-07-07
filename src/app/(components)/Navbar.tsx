@@ -2,16 +2,9 @@ import { signOut } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { LogOut } from "lucide-react";
 import Link from "next/link";
+import { getFirstLetterCapitalized } from "../(utils)/utils";
 
 export default function Navbar() {
-
-  function getFirstLetterCapitalized(str: string) {
-    if (str && str.length > 0) {
-      return str.charAt(0).toUpperCase();
-    } else {
-      return '';
-    }
-  }    
 
   return (
     <div className="navbar bg-transparent">
@@ -36,10 +29,6 @@ export default function Navbar() {
             className="btn btn-ghost btn-circle avatar hover:bg-transparent"
           >
             <div className="w-10 rounded-full bg-[#28704F] text-xl font-light text-white py-[0.35rem]">
-              {/* <img
-                alt={String(auth?.currentUser?.email)}
-                src={String(auth?.currentUser?.photoURL ? auth?.currentUser?.photoURL : "/assets/imgs/user-placeholder.png")}
-              /> */}
               {getFirstLetterCapitalized(String(auth?.currentUser?.email))}
             </div>
           </div>
@@ -48,7 +37,7 @@ export default function Navbar() {
             className="menu menu-sm dropdown-content bg-base-100 rounded-md z-[1] mt-3 w-52 p-1 shadow"
           >
             <li className="menu-title font-medium text-xs">
-                {auth?.currentUser?.email}
+              {auth?.currentUser?.email}
             </li>
             <li>
               <a className="rounded-md p-2 px-3 hover:text-red-600"
