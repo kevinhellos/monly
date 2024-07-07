@@ -13,7 +13,7 @@ const login = () => {
             className="mx-auto"
           />
           <h2 className="text-xl font-medium mb-0 mt-3 text-center font-sans">
-           Monly Expense Tracker
+           Monly
           </h2>
           <p className="mb-3 text-center text-sm">Please sign in to continue</p>
 

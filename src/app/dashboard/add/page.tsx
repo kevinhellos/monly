@@ -14,20 +14,27 @@ function AddExpense() {
   const expenseNameInput = useRef<HTMLInputElement>(null);
   const [expenseName, setExpenseName] = useState<string>("");
   const [expenseAmount, setExpenseAmount] = useState<number|null>();
+  const [expenseCategory, setExpenseCategory] = useState<string>("food");
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const addNewExpense = useAddExpense;
 
   async function addNewExpenseData() {
     if (expenseName.trim() !== "" && expenseAmount! > 0) {
+        setIsLoading(true);
         try {
-            const newExpense = await addNewExpense(expenseName, expenseAmount!);
+            const newExpense = await addNewExpense(expenseName, expenseAmount!, expenseCategory);
             if (newExpense) {
-                toast.success("Expense added successfully");
-                setTimeout(function(){
-                    router.push("/dashboard");
-                }, 1500);
+                setIsLoading(false);
+                // toast.success("Expense added successfully");
+                router.push("/dashboard");
+                // setTimeout(function(){
+                //     router.push("/dashboard");
+                // }, 1500);
             }
         } catch (error: any) {
+            setIsLoading(false);
             toast.error(`Error: ${error}`);
             console.error(error);
         }
@@ -53,6 +60,7 @@ function AddExpense() {
                 <ArrowLeft size={20}/>
             </Link>
             <h1 className="text-2xl font-sans text-center mt-[-30px] mb-10">Add expense</h1>
+            
             <label htmlFor="name" className="text-gray-400 text-sm">Name</label>
             <input
                 type="text"
@@ -63,6 +71,7 @@ function AddExpense() {
                 value={expenseName}
                 ref={expenseNameInput}
             />
+
             <label htmlFor="amount" className="text-gray-400 text-sm">Amount</label>
             <input
                 type="number"
@@ -75,12 +84,30 @@ function AddExpense() {
                         setExpenseAmount(amount);
                     }
                 }}
+                min={0}
+                max={9999}
             />
+            
+            <label htmlFor="category" className="text-gray-400 text-sm">Category</label>
+            <select name="category" className="select w-full  bg-gray-50 placeholder:text-gray-300 focus:outline-[#28704F]"
+                onChange={(e) => setExpenseCategory(e.target.value)}
+                value={expenseCategory}
+            >
+                <option value="food">Food</option>
+                <option value="transport">Transport</option>
+                <option value="groceries">Groceries</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="travel">Travel</option>
+                <option value="shopping">Shopping</option>
+                <option value="other">Other</option>
+            </select>
+
             <div className="text-center">
                 <button 
                     type="button"
                     className="mt-5 btn bg-[#5AE4A6] hover:bg-[#28704F] hover:text-white border-none font-sans font-medium rounded-full px-10 shadow-lg w-full max-auto mb-5"
                     onClick={addNewExpenseData}
+                    disabled={isLoading}
                     >
                     Add expense
                 </button>

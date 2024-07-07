@@ -2,7 +2,7 @@ import { auth } from "../config/firebase";
 import { db } from "../config/firebase";
 import { collection, addDoc } from "firebase/firestore"; 
 
-export async function useAddExpense(name: string, amount: number){
+export async function useAddExpense(name: string, amount: number, category: string){
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth() + 1; // Note: getMonth() returns zero-based index (0 for January)
@@ -14,6 +14,7 @@ export async function useAddExpense(name: string, amount: number){
     const newExpense = await addDoc(collection(db, `/Expenses/${auth?.currentUser?.uid}/Data`), {
         name,
         amount,
+        category,
         date: formattedDate,
     });
     return newExpense.id;

@@ -42,6 +42,7 @@ const Dashboard = () => {
                     key={expense.id}
                     name={expense.name}
                     amount={expense.amount}
+                    category={expense.category}
                     date={expense.date}
                 />
             )))}
@@ -57,7 +58,7 @@ const Dashboard = () => {
             <div className="text-center">
                 <Link 
                     href="/dashboard/add"
-                    className="mt-0 btn bg-[#5AE4A6] hover:bg-[#28704F] hover:text-white border-none font-sans font-medium rounded-full px-10 shadow-lg w-56">
+                    className="mt-0 btn bg-[#5AE4A6] hover:bg-[#28704F] hover:text-white border-none font-sans font-medium rounded-full px-10 shadow-lg w-full">
                     <Plus size={20}/>
                     Add expense
                 </Link>
