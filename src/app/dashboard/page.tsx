@@ -63,7 +63,7 @@ const Dashboard = () => {
 
             <div className="filter-container">
                 <div 
-                    className={`text-md mb-5 badge p-3 px-5 ${selectedFilter == "all" ? "bg-black text-white hover:bg-black" : ""} py-4 cursor-pointer me-3 border border-gray-200 hover:bg-gray-100 shadow-sm`}
+                    className={`text-md mb-5 badge p-3 px-5 ${selectedFilter == "all" ? "bg-black text-white active:bg-black focus:bg-black hover:bg-black" : ""} py-4 cursor-pointer me-3 border border-gray-200 hover:bg-gray-100 shadow-sm`}
                     onClick={() => {
                         setSelectedFilter("all");
                         router.push("/dashboard?filter=all");
@@ -72,7 +72,7 @@ const Dashboard = () => {
                     All expenses
                 </div>
                 <div 
-                    className={`text-md mb-5 badge p-3 px-5 ${selectedFilter == "today" ? "bg-black text-white hover:bg-black" : ""} py-4 cursor-pointer me-3 border border-gray-200 hover:bg-gray-100 shadow-sm`}
+                    className={`text-md mb-5 badge p-3 px-5 ${selectedFilter == "today" ? "bg-black text-white  active:bg-black focus:bg-black hover:bg-black" : ""} py-4 cursor-pointer me-3 border border-gray-200 hover:bg-gray-100 shadow-sm`}
                     onClick={() => {
                         setSelectedFilter("today");
                         router.push("/dashboard?filter=today");
