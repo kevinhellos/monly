@@ -6,6 +6,7 @@ const login = () => {
     <div className="flex justify-center items-center bg-slate-50 h-screen">
       <div className="card w-96 bg-base-100">
         <div className="card-body p-10">
+          
           <img
             src="/assets/imgs/money.png"
             width={55}
