@@ -12,7 +12,8 @@ export async function useGetAllExpenses(): Promise<any[]>{
             name: doc.data().name,
             amount: doc.data().amount,
             category: doc.data().category,
-            date: doc.data().date
+            date: doc.data().date,
+            timestamp: doc.data().timestamp,
         }));
     } 
     catch (error) {

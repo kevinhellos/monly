@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-green {
+    @apply
+    bg-[#5AE4A6] hover:bg-[#28704F] hover:text-white border-none font-sans font-medium rounded-full px-10 shadow-lg w-full
+}
+.black-badge {
+    @apply
+    bg-black text-white active:bg-black focus:bg-black hover:bg-black
+}
+.filter-badge {
+    @apply
+    p-3 px-5 py-4 cursor-pointer me-3 border border-gray-200 shadow-sm font-sans
+}
+
+.input, .select {
+    @apply
+    bg-gray-50 placeholder:text-gray-300 focus:outline-[#28704F] rounded-md mb-5
+}

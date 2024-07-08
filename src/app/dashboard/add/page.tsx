@@ -76,7 +76,7 @@ function AddExpense() {
                 type="text"
                 name="name"
                 placeholder="E.g. groceries"
-                className="input w-full bg-gray-50 placeholder:text-gray-300 focus:outline-[#28704F] rounded-md mb-5"
+                className="input w-full"
                 onChange={(e) => setExpenseName(e.target.value)}
                 value={expenseName}
                 ref={expenseNameInput}
@@ -87,19 +87,17 @@ function AddExpense() {
                 type="number"
                 name="amount"
                 placeholder="E.g. $3"
-                className="input w-full bg-gray-50 placeholder:text-gray-300 focus:outline-[#28704F] rounded-md mb-5"
+                className="input w-full"
                 onChange={(e) => {
                     const amount = parseInt(e.target.value);
                     if (!isNaN(amount)) {
                         setExpenseAmount(amount);
                     }
                 }}
-                min={0}
-                max={9999}
             />
             
             <label htmlFor="category" className="text-gray-400 text-sm">Category</label>
-            <select name="category" className="select w-full  bg-gray-50 placeholder:text-gray-300 focus:outline-[#28704F]"
+            <select name="category" className="select w-full"
                 onChange={(e) => setExpenseCategory(e.target.value)}
                 value={expenseCategory}
             >
@@ -115,7 +113,7 @@ function AddExpense() {
             <div className="text-center">
                 <button 
                     type="button"
-                    className="mt-5 btn bg-[#5AE4A6] hover:bg-[#28704F] hover:text-white border-none font-sans font-medium rounded-full px-10 shadow-lg w-full max-auto mb-5"
+                    className="mt-5 btn btn-green mb-5"
                     onClick={addNewExpenseData}
                     disabled={isLoading}
                     >
